@@ -1,0 +1,59 @@
+231 - POWER OF TWO
+
+Given an integer n, return true if it is a power of two. Otherwise, return false.
+An integer n is a power of two, if there exists an integer x such that n == 2x.
+
+Example 1:
+Input: n = 1
+Output: true
+Explanation: 20 = 1
+
+Example 2:
+Input: n = 16
+Output: true
+Explanation: 24 = 16
+
+Example 3:
+Input: n = 3
+Output: false
+
+
+
+-> Brute force solution is that 
+   -> dividing the given number by two until it reaches 1 perfectly.
+      If it reaches 1, it is a power of 2, else it is not.
+      This takes more time and space especially for larger numbers
+    if n <= 0:
+        return False
+    while n % 2 == 0:
+        n = n / 2
+    return n == 1
+
+
+
+#CODE
+
+```
+class Solution(object):
+    def isPowerOfTwo(self, n):
+        return n>0 and (n & (n-1))==0
+```
+
+
+-> All powers of two have only one '1' when written in binary format
+Ex: 2 : 0001
+    4 : 0010
+    8 : 0100
+    16 : 1000
+    32 : 10000
+
+-> So, obviously, a number less than the power of two will have all 1's except in a specific position, that is the largest number.
+   If we do bitwise and operation (&) this number from the power of 2, all 1's get cancelled, and final output is 0.
+   In this way, we can check if a number is Power of two or not.
+
+
+EX: Let us consider 8
+    8 : 1000
+    7 : 0111
+    ----------
+    8 & 7 : 0000  (Bitwise And output is 1 if and only if both inputs are 1, in this case both inputs are never 1, so output is 0)
