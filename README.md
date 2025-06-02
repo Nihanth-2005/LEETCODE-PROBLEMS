@@ -1,2 +1,1 @@
-# LEETCODE-PROBLEMS
-Daily Leetcode problem solutions organized by difficulty - Easy, Medium and Hard. Implemented in Python with clean code, comments, and explanations
+| 2 | [Two Sum]     [(https://leetcode.com/problems/two-sum/)] | [PROBLEM_FOLDER/solution.py](PROBLEM_FOLDER/solution.py) |
