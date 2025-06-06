@@ -1,0 +1,37 @@
+#CODE
+
+class Solution(object):
+    def calPoints(self, operations):
+        """
+        :type operations: List[str]
+        :rtype: int
+        """
+        lista = []
+
+        for op in operations:
+            if op.lstrip('-').isdigit(): 
+                lista.append(int(op))
+            elif op == "C" and lista:
+                lista.pop()
+            elif op == "D" and lista:
+                lista.append(lista[-1] * 2)
+            elif op == "+" and len(lista) >= 2:
+                lista.append(lista[-1] + lista[-2])
+
+        return (sum(lista))
+
+
+-> In this code, 
+          Given,
+          An integer x    ->     Record a new score of x.   
+          '+'    ->     Record a new score that is the sum of the previous two scores. 
+          'D'    ->     Record a new score that is the double of the previous score.
+          'C'    ->     Invalidate the previous score, removing it from the record.
+
+
+          If the operatoris a digit, append it to the lista
+          If the operator is C and lista is not empty, then pop the last element of the list
+          If the operator is D and lista is not empty, the append the double of the last element of the lista tothe lista
+          If the operator is + and if length of the lista is greater than or equal to 2, then add the last two elements of the lista
+
+          Finally, return the sum of all lista elements
