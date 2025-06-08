@@ -1,0 +1,37 @@
+#General approach
+
+class Solution(object):
+    def judgeCircle(self, moves):
+        if moves.count('U')!=moves.count('D'):
+            return False
+        if moves.count('L')!=moves.count('R'):
+            return False
+        return True
+
+-> In this approach, U -> UP
+                     D -> DOWN
+                     L -> LEFT
+                     R -> RIGHT
+        -> We count the number of U's and D's as they are opposite to each other and they cancel out
+           Ex: UUDD  -> 2 times UP and 2 times DOWN, cancel each other and net output is zero.
+        -> Similar case applies to L's and R's also.
+        -> But, the issue is that, in order to count the number of U's, D's, L's, R's individually, the string has to be traversed four times, resulting in increase of Time Complexity.
+        -> So, we can apply a better approach by traversing the string only single time and initializing a coupe of variables and keeping track of them
+
+
+#OPTIMIZED SOLUTION
+
+class Solution(object):
+    def judgeCircle(self, moves):
+        x=0
+        y=0
+        for move in moves:
+            if move == 'U':
+                y+=1
+            elif move == "D":
+                y-=1
+            elif move == "L":
+                x+=1
+            else:
+                x-=1
+        return x==0 and y==0
